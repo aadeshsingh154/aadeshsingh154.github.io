@@ -7,7 +7,7 @@ import react from "@vitejs/plugin-react";
  * e.g. BASE_PATH=/portfolio/ — and nothing else needs to change.
  */
 export default defineConfig({
-  base: process.env.BASE_PATH ?? "/",
+  base: process.env.BASE_PATH || "/",
   plugins: [react()],
   build: {
     target: "es2020",
