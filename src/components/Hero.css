@@ -1,0 +1,58 @@
+.hero {
+  padding-top: clamp(3rem, 6vw, 5.5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
+}
+
+.hero__portrait {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--surface-sunken);
+}
+
+/*
+ * The heading is meant to run the full width of the container. `balance` would
+ * even out the line lengths and leave a ragged right edge, so it is off here —
+ * every line except the last should reach the container edge.
+ */
+.hero__heading {
+  margin-top: var(--sp-5);
+  max-width: none;
+  font-weight: 500;
+  text-wrap: normal;
+  /* Tuned so the lines pack tightly against both container edges. */
+  font-size: clamp(2rem, 4.5vw, 5rem);
+  letter-spacing: -0.032em;
+}
+
+.hero__lead {
+  margin-top: var(--sp-5);
+  max-width: 78ch;
+  font-size: clamp(1.0625rem, 1.3vw, 1.3125rem);
+  line-height: 1.58;
+}
+
+.hero__social {
+  margin-top: var(--sp-6);
+}
+
+.hero__marquee {
+  display: block;
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+@media (max-width: 767px) {
+  .hero__portrait {
+    width: 96px;
+    height: 96px;
+  }
+
+  .hero__heading {
+    margin-top: var(--sp-4);
+  }
+
+  .hero__social {
+    margin-top: var(--sp-5);
+  }
+}

@@ -1,0 +1,89 @@
+.ab__header {
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.ab__title {
+  max-width: 16ch;
+}
+
+/* Square portrait on the left, the opening statement on the right. */
+.ab__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.ab__portraitWrap {
+  display: block;
+}
+
+.ab__portrait {
+  width: 100%;
+  /* Required: the img's height attribute is a presentational hint, and without
+     an explicit `height` here it wins over `aspect-ratio`. */
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: var(--radius-lg);
+  background: var(--surface-sunken);
+}
+
+.ab__introText {
+  padding-top: clamp(0rem, 2vw, 1.5rem);
+}
+
+.ab__lead {
+  max-width: 34ch;
+}
+
+.ab__para {
+  margin-top: var(--sp-4);
+}
+
+.ab__section {
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.ab__prose .t-lead,
+.ab__prose .t-body {
+  max-width: 64ch;
+}
+
+.ab__prose .t-section + .ab__para {
+  margin-top: var(--sp-5);
+}
+
+.ab__gallery {
+  display: block;
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+@media (max-width: 899px) {
+  .ab__intro {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-5);
+  }
+
+  /*
+   * Once the portrait stops sitting beside the text it gets the full column
+   * width, so a landscape crop would slice the face off the bottom. A 4:5
+   * frame crops the sides instead, leaving the subject whole, and the width
+   * cap stops it turning into a full-screen slab on a tablet.
+   */
+  .ab__portrait {
+    aspect-ratio: 4 / 5;
+    object-position: center center;
+    max-width: 460px;
+  }
+
+  .ab__introText {
+    padding-top: 0;
+  }
+
+  .ab__lead {
+    max-width: none;
+  }
+}

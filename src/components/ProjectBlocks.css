@@ -1,0 +1,161 @@
+.pb__list {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3.5rem, 7vw, 6.5rem);
+}
+
+/* ---- Stage -------------------------------------------------------- */
+
+.pb--stage {
+  width: min(100% - (var(--container-gutter) * 2), var(--container-max));
+  margin-inline: auto;
+}
+
+.pb__stageInner {
+  display: grid;
+  grid-template-columns: 160px minmax(0, 1fr);
+  gap: var(--sp-5);
+  max-width: 1000px;
+}
+
+.pb__stageLabel {
+  padding-top: 0.55rem;
+}
+
+.pb__stageBody {
+  max-width: 68ch;
+}
+
+.pb__para {
+  margin-top: var(--sp-3);
+}
+
+.pb__bullets {
+  margin: var(--sp-4) 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.pb__bullets li {
+  padding-left: var(--sp-4);
+  position: relative;
+}
+
+.pb__bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+
+.pb__bulletLabel {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ---- Media -------------------------------------------------------- */
+
+.pb--media {
+  width: min(100% - (var(--container-gutter) * 2), var(--container-max));
+  margin-inline: auto;
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.pb--full {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pb--wide {
+  width: min(100% - (var(--container-gutter) * 2), 880px);
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pb--duo {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.pb--trio {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+}
+
+/* Full-bleed stack: boards run edge to edge with no gap between them, the way
+   a case study reads on Behance. */
+.pb--bleed {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  gap: 0;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.pb--bleed > * {
+  display: block;
+  font-size: 0;
+  line-height: 0;
+}
+
+.pb--bleed .media {
+  border-radius: 0;
+  border: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+  background: transparent;
+}
+
+.pb--tall {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 340px));
+  justify-content: center;
+}
+
+.pb--tall .media {
+  border-radius: var(--radius-lg);
+}
+
+/* ---- Quote -------------------------------------------------------- */
+
+.pb--quote {
+  width: min(100% - (var(--container-gutter) * 2), 900px);
+  margin-inline: auto;
+  padding: 0;
+  text-align: center;
+}
+
+.pb__quoteText {
+  font-size: clamp(1.375rem, 3vw, 2.125rem);
+  line-height: 1.32;
+  letter-spacing: var(--tracking-heading);
+  font-weight: 500;
+  text-wrap: balance;
+}
+
+.pb--quote footer {
+  margin-top: var(--sp-4);
+}
+
+@media (max-width: 900px) {
+  .pb__stageInner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-2);
+  }
+
+  .pb__stageLabel {
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .pb--duo,
+  .pb--trio {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

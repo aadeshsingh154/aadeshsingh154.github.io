@@ -1,0 +1,150 @@
+.rs__header {
+  padding-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+.rs__title {
+  max-width: 17ch;
+}
+
+.rs__summary {
+  margin-top: var(--sp-4);
+  max-width: 62ch;
+}
+
+.rs__download {
+  margin-top: var(--sp-6);
+}
+
+.rs__section {
+  margin-top: clamp(4rem, 8vw, 7rem);
+}
+
+.rs__profile {
+  max-width: 72ch;
+}
+
+.rs__label {
+  padding-bottom: var(--sp-3);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--sp-6);
+}
+
+.rs__roles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+.rs__role {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: var(--sp-5);
+}
+
+.rs__rolePeriod {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 0.3rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.rs__company {
+  margin-top: 4px;
+  color: var(--text-secondary);
+}
+
+.rs__bullets {
+  margin: var(--sp-4) 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+
+.rs__bullets li {
+  padding-left: var(--sp-4);
+  position: relative;
+}
+
+.rs__bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+
+.rs__bulletLabel {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ---- Skills -------------------------------------------------------- */
+
+.rs__tags {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+
+.rs__tag {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: var(--radius-pill);
+  padding: 0.5rem 1rem;
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+
+.rs__tools {
+  margin-top: var(--sp-6);
+  padding-top: var(--sp-4);
+  border-top: 1px solid var(--border);
+}
+
+.rs__tools .t-body {
+  margin-top: 4px;
+}
+
+/* ---- Education ----------------------------------------------------- */
+
+.rs__twoCol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.rs__eduTitle {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 900px) {
+  .rs__role {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--sp-2);
+  }
+
+  .rs__rolePeriod {
+    flex-direction: row;
+    gap: var(--sp-3);
+    padding-top: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .rs__twoCol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

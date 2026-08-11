@@ -1,0 +1,208 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 93%, transparent);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-mid) var(--ease-out-expo);
+}
+
+.nav--open {
+  background: var(--bg);
+  border-bottom-color: var(--border);
+}
+
+.nav__inner {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+}
+
+.nav__brand {
+  font-size: var(--text-md);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  text-decoration: none;
+  color: var(--text);
+  transition: opacity var(--dur-fast) var(--ease-out-expo);
+}
+
+.nav__brand:hover {
+  opacity: 0.6;
+}
+
+.nav__desktop {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-6);
+}
+
+.nav__link {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--text-secondary);
+  position: relative;
+  padding-block: 4px;
+  transition: color var(--dur-mid) var(--ease-out-expo);
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-mid) var(--ease-out-expo);
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--text);
+}
+
+.nav__link:hover::after,
+.nav__link:focus-visible::after,
+.nav__link.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ---- Mobile ------------------------------------------------------- */
+
+.nav__toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.nav__bar {
+  position: absolute;
+  left: 11px;
+  width: 22px;
+  height: 1.5px;
+  background: var(--text);
+  border-radius: 2px;
+  transition:
+    transform var(--dur-mid) var(--ease-out-expo),
+    opacity var(--dur-fast) var(--ease-out-expo);
+}
+
+.nav__bar:nth-child(1) {
+  top: 19px;
+}
+
+.nav__bar:nth-child(2) {
+  top: 25px;
+}
+
+.nav--open .nav__bar:nth-child(1) {
+  transform: translateY(3px) rotate(45deg);
+}
+
+.nav--open .nav__bar:nth-child(2) {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
+/*
+ * The panel lives in the header's flow, not over the page. Animating
+ * grid-template-rows from 0fr to 1fr gives a real height transition without
+ * hard-coding a max-height, so the page content slides down as it opens and
+ * back up as it closes.
+ */
+.nav__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 420ms var(--ease-out-expo);
+}
+
+.nav--open .nav__panel {
+  grid-template-rows: 1fr;
+}
+
+.nav__panelInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.nav__panel nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  padding-top: var(--sp-4);
+}
+
+.nav__panelLink {
+  font-size: clamp(1.5rem, 6vw, 1.875rem);
+  font-weight: 500;
+  letter-spacing: var(--tracking-heading);
+  text-decoration: none;
+  color: var(--text);
+}
+
+.nav__panelLink.is-active {
+  color: var(--text-tertiary);
+}
+
+/* Runs on each open rather than on mount, since the panel never leaves the DOM. */
+.nav--open .nav__panelLink {
+  opacity: 0;
+  animation: navLinkIn 460ms var(--ease-out-expo) forwards;
+  animation-delay: calc(80ms + var(--i) * 70ms);
+}
+
+.nav__panelSocial {
+  padding-block: var(--sp-5) var(--sp-5);
+}
+
+@keyframes navLinkIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .nav__desktop {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: block;
+  }
+}
+
+/* Above the mobile breakpoint the panel must never take up space. */
+@media (min-width: 768px) {
+  .nav__panel {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__panel {
+    transition: none;
+  }
+
+  .nav--open .nav__panelLink {
+    opacity: 1;
+    animation: none;
+  }
+}

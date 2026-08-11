@@ -1,0 +1,78 @@
+.marquee {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 6%,
+    #000 94%,
+    transparent
+  );
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
+
+.marquee__track {
+  list-style: none;
+  display: flex;
+  align-items: stretch;
+  gap: clamp(0.75rem, 1.4vw, 1.25rem);
+  margin: 0;
+  padding: 0;
+  width: max-content;
+  animation-name: marqueeScroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.marquee__track--reverse {
+  animation-direction: reverse;
+}
+
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__item {
+  flex: none;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--surface-sunken);
+}
+
+.marquee__item img {
+  display: block;
+  width: auto;
+  object-fit: cover;
+}
+
+.marquee--wide .marquee__item img {
+  height: clamp(180px, 22vw, 300px);
+}
+
+/* Photographs: one shared height, natural widths — so portrait and landscape
+   frames can sit in the same row without cropping either. */
+.marquee--tall .marquee__item img {
+  height: clamp(230px, 27vw, 400px);
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .marquee__track {
+    animation: none;
+  }
+}

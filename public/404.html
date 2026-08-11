@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Aadesh Singh</title>
+    <script>
+      // GitHub Pages serves this file for any unknown path. Stash the route the
+      // visitor actually asked for, then hand control back to the SPA at the
+      // site root — main.tsx restores it before React mounts, so deep links and
+      // refreshes keep working with clean URLs.
+      (function () {
+        var base = "/";
+        var path = window.location.pathname;
+        var route = path.indexOf(base) === 0 ? path.slice(base.length - 1) : path;
+        sessionStorage.setItem(
+          "gh-pages-redirect",
+          route + window.location.search + window.location.hash
+        );
+        window.location.replace(base);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>

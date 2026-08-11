@@ -1,0 +1,55 @@
+.socials {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin: 0;
+  padding: 0;
+}
+
+.socials__btn {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  text-decoration: none;
+  background: transparent;
+  transition:
+    background var(--dur-mid) var(--ease-out-expo),
+    border-color var(--dur-mid) var(--ease-out-expo),
+    color var(--dur-mid) var(--ease-out-expo),
+    transform var(--dur-mid) var(--ease-out-expo);
+}
+
+.socials--lg .socials__btn {
+  width: 46px;
+  height: 46px;
+}
+
+.socials--sm .socials__btn {
+  width: 38px;
+  height: 38px;
+}
+
+.socials__btn:hover,
+.socials__btn:focus-visible {
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--bg);
+  transform: translateY(-2px);
+}
+
+/* On the dark CTA band the tokens still describe the light page, so the
+   colours are pinned explicitly here. */
+.dark-surface .socials__btn {
+  border-color: var(--dark-border);
+  color: var(--dark-text-secondary);
+}
+
+.dark-surface .socials__btn:hover,
+.dark-surface .socials__btn:focus-visible {
+  background: #fff;
+  border-color: #fff;
+  color: var(--dark-section);
+}

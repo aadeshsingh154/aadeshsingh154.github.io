@@ -1,0 +1,94 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-snug);
+  text-wrap: balance;
+}
+
+.t-display {
+  font-size: var(--text-display);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+.t-section {
+  font-size: var(--text-section);
+  line-height: 1.15;
+  letter-spacing: var(--tracking-display);
+  font-weight: 600;
+}
+
+.t-xl {
+  font-size: var(--text-xl);
+  line-height: 1.28;
+  letter-spacing: var(--tracking-heading);
+  font-weight: 600;
+}
+
+.t-lg {
+  font-size: var(--text-lg);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+.t-lead {
+  font-size: var(--text-lead);
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 58ch;
+  text-wrap: pretty;
+}
+
+.t-body {
+  font-size: var(--text-md);
+  line-height: var(--leading-body);
+  color: var(--text-secondary);
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+.t-small {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.t-eyebrow {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+.t-mute {
+  color: var(--text-tertiary);
+}
+
+.dark-surface .t-lead,
+.dark-surface .t-body,
+.dark-surface .t-small {
+  color: var(--dark-text-secondary);
+}
+
+.dark-surface .t-eyebrow,
+.dark-surface .t-mute {
+  color: #9a9a9a;
+}
